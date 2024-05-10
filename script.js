@@ -1,15 +1,30 @@
-let btn = document.getElementsByTagName("button");
+let btn = document.querySelectorAll(".numBtn");
+let operatorBtn = document.querySelectorAll(".operatorBtn");
 let display = document.querySelector(".display");
 
-let displayValue;
+let displayValue1;
+let displayValue2;
 
 Array.from(btn).forEach((button) => {
   button.addEventListener("click", displayNumber);
 });
 
+Array.from(operatorBtn).forEach((button) => {
+  button.addEventListener("click", mathProblem);
+});
+
+function mathProblem(e) {
+  let value = e.target.value;
+  if (value === "+") {
+    console.log(`value: ${displayValue1 + displayValue1}`);
+  }
+}
+
 function displayNumber(e) {
-  const button = e.target;
-  display.textContent = button.value;
+  const button = e.target.value;
+  displayValue1 = button;
+  display.textContent = button;
+  console.log(displayValue1);
 }
 
 function add(num1, num2) {
@@ -43,10 +58,4 @@ function operate(number1, operator, number2) {
     return divide(number1, number2);
   }
 }
-console.log(operate(8, "/", 4));
-
-// function display() {
-//   document.querySelector("button").addEventListener("click", function() {
-
-//   });
-// }
+console.log(operate(160, "/", 4));
