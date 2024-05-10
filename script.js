@@ -1,30 +1,49 @@
 let btn = document.querySelectorAll(".numBtn");
 let operatorBtn = document.querySelectorAll(".operatorBtn");
 let display = document.querySelector(".display");
+let firstClick = true;
 
 let displayValue1;
 let displayValue2;
+let operationValue;
 
 Array.from(btn).forEach((button) => {
-  button.addEventListener("click", displayNumber);
+  button.addEventListener("click", displayNumber1);
 });
 
 Array.from(operatorBtn).forEach((button) => {
-  button.addEventListener("click", mathProblem);
+  button.addEventListener("click", operation);
 });
 
 function mathProblem(e) {
   let value = e.target.value;
   if (value === "+") {
-    console.log(`value: ${displayValue1 + displayValue1}`);
+    console.log(`value : ${Number(displayValue1) + Number(displayValue1)}`);
   }
 }
 
-function displayNumber(e) {
-  const button = e.target.value;
-  displayValue1 = button;
-  display.textContent = button;
+function displayNumber1(e) {
+  let value = e.target.value;
+  if (displayValue1 === undefined) {
+    displayValue1 = value;
+  } else {
+    value = displayValue1 += displayValue1;
+  }
+  display.textContent = value;
   console.log(displayValue1);
+}
+
+function displayNumber2(e) {
+  let value = e.target.value;
+  displayValue1 = value;
+  display.textContent = value;
+  console.log(displayValue1);
+}
+
+function operation(e) {
+  let value = e.target.value;
+  operationValue = value;
+  console.log(value);
 }
 
 function add(num1, num2) {
@@ -58,4 +77,4 @@ function operate(number1, operator, number2) {
     return divide(number1, number2);
   }
 }
-console.log(operate(160, "/", 4));
+// console.log(operate(160, "/", 4));
