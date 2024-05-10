@@ -1,6 +1,16 @@
-let btn = document.querySelector(".btn");
+let btn = document.getElementsByTagName("button");
+let display = document.querySelector(".display");
+
 let displayValue;
 
+Array.from(btn).forEach((button) => {
+  button.addEventListener("click", displayNumber);
+});
+
+function displayNumber(e) {
+  const button = e.target;
+  display.textContent = button.value;
+}
 
 function add(num1, num2) {
   let sum = num1 + num2;
