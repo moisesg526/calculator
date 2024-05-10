@@ -43,13 +43,9 @@
     color: #fff;
 }
 
-.buttons p {
+button {
     background-color: rgb(87, 190, 206);
     border-radius: 10px;
     padding: 1rem;
     cursor: pointer;
-}
-
-.buttons p:active {
-    box-shadow: 2px 2px 5px rgb(67, 132, 142);
 }

@@ -1,3 +1,7 @@
+let btn = document.querySelector(".btn");
+let displayValue;
+
+
 function add(num1, num2) {
   let sum = num1 + num2;
   return sum;
@@ -18,11 +22,6 @@ function divide(num1, num2) {
   return quotient;
 }
 
-// console.log(add(10, 2));
-// console.log(subtract(10, 2));
-// console.log(multiply(10, 2));
-// console.log(divide(10, 2));
-
 function operate(number1, operator, number2) {
   if (operator === "+") {
     return add(number1, number2);
@@ -34,4 +33,10 @@ function operate(number1, operator, number2) {
     return divide(number1, number2);
   }
 }
-console.log(operate(8, "/", 4))
+console.log(operate(8, "/", 4));
+
+// function display() {
+//   document.querySelector("button").addEventListener("click", function() {
+
+//   });
+// }
