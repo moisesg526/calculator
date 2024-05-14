@@ -5,8 +5,10 @@ let answer = document.querySelector(".equals");
 
 // let firstClick = true;
 
-let displayValue = [];
+let displayValue1 = [];
+let displayValue2 = [];
 let operationValue;
+let operationClicked = false;
 
 Array.from(btn).forEach((button) => {
   button.addEventListener("click", displayNumber);
@@ -28,21 +30,33 @@ answer.addEventListener("click", operate);
 function displayNumber(e) {
   let value = e.target.value;
   if (
-    e.target.value !== "÷" ||
-    e.target.value !== "X" ||
-    e.target.value !== "-" ||
-    e.target.value !== "+"
+    // e.target.value !== "÷" ||
+    // e.target.value !== "X" ||
+    // e.target.value !== "-" ||
+    // e.target.value !== "+"
+    operationClicked == false
   ) {
-    displayValue.push(value);
-    display.textContent = displayValue.join("");
-    console.log(displayValue);
-  } else if (e.target.value1 == "operation") {
+    displayValue1.push(value);
+    display.textContent = displayValue1.join("");
+    console.log(displayValue1);
+  } else if (
+    e.target.value == "÷" ||
+    e.target.value == "X" ||
+    e.target.value == "-" ||
+    e.target.value == "+"
+  ) {
     operationValue = e.target.value;
-    console.log(operationValue);
+    operationClicked = true;
+    console.log(`Operation button was clicked: ${operationValue}`);
+  } else if (operationClicked == true) {
+    displayValue2.push(value);
+    display.textContent = displayValue2.join("");
+    console.log(displayValue2);
   }
 }
 
 function operation(e) {
+  operationClicked = true;
   let value = e.target.value;
   operationValue = value;
   console.log(value);
