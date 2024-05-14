@@ -34,7 +34,7 @@ function displayNumber(e) {
     e.target.value !== "+"
   ) {
     displayValue.push(value);
-    display.textContent = displayValue;
+    display.textContent = displayValue.join("");
     console.log(displayValue);
   } else if (e.target.value1 == "operation") {
     operationValue = e.target.value;
