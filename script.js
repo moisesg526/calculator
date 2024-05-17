@@ -2,6 +2,7 @@ let btn = document.querySelectorAll(".numBtn");
 let operatorBtn = document.querySelectorAll(".operatorBtn");
 let display = document.querySelector(".display");
 let answer = document.querySelector(".equals");
+let clear = document.querySelector("#clear");
 
 // let firstClick = true;
 
@@ -19,6 +20,16 @@ Array.from(operatorBtn).forEach((button) => {
 });
 
 answer.addEventListener("click", operate);
+
+clear.addEventListener("click", clearScreen);
+
+function clearScreen() {
+  displayValue1 = [];
+  displayValue2 = [];
+  display.textContent = "0";
+  console.log(displayValue1);
+  console.log(displayValue2);
+}
 
 // function mathProblem(e) {
 //   let value = e.target.value;
