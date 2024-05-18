@@ -1,10 +1,8 @@
 let btn = document.querySelectorAll(".numBtn");
 let operatorBtn = document.querySelectorAll(".operatorBtn");
 let display = document.querySelector(".display");
-let answer = document.querySelector(".equals");
+let answer = document.querySelector("#equals");
 let clear = document.querySelector("#clear");
-
-// let firstClick = true;
 
 let displayValue1 = [];
 let displayValue2 = [];
@@ -20,7 +18,6 @@ Array.from(operatorBtn).forEach((button) => {
 });
 
 answer.addEventListener("click", operate);
-
 clear.addEventListener("click", clearScreen);
 
 function clearScreen() {
@@ -31,35 +28,13 @@ function clearScreen() {
   console.log(displayValue2);
 }
 
-// function mathProblem(e) {
-//   let value = e.target.value;
-//   if (value === "+") {
-//     console.log(`value : ${Number(displayValue) + Number(displayValue)}`);
-//   }
-// }
-
 function displayNumber(e) {
   let value = e.target.value;
-  if (
-    // e.target.value !== "÷" ||
-    // e.target.value !== "X" ||
-    // e.target.value !== "-" ||
-    // e.target.value !== "+"
-    operationClicked == false
-  ) {
+  if (operationClicked === false) {
     displayValue1.push(value);
     display.textContent = displayValue1.join("");
     console.log(displayValue1);
-  } else if (
-    e.target.value == "÷" ||
-    e.target.value == "X" ||
-    e.target.value == "-" ||
-    e.target.value == "+"
-  ) {
-    operationValue = e.target.value;
-    operationClicked = true;
-    console.log(`Operation button was clicked: ${operationValue}`);
-  } else if (operationClicked == true) {
+  } else if (operationClicked === true) {
     displayValue2.push(value);
     display.textContent = displayValue2.join("");
     console.log(displayValue2);
@@ -68,13 +43,13 @@ function displayNumber(e) {
 
 function operation(e) {
   operationClicked = true;
-  let value = e.target.value;
-  operationValue = value;
-  console.log(value);
 }
 
 function add(num1, num2) {
+  num1 = displayValue1.join("");
+  num2 = displayValue2.join("");
   let sum = num1 + num2;
+  console.log(sum);
   return sum;
 }
 
@@ -93,15 +68,16 @@ function divide(num1, num2) {
   return quotient;
 }
 
-function operate(number1, operator, number2) {
-  if (operator === "+") {
+function operate(number1, op, number2) {
+  number1 = displayValue1.join("");
+  number2 = displayValue2.join("");
+  if (op === "+") {
     return add(number1, number2);
-  } else if (operator === "-") {
+  } else if (op === "-") {
     return subtract(number1, number2);
-  } else if (operator === "*") {
+  } else if (op === "*") {
     return multiply(number1, number2);
-  } else if (operator === "/") {
+  } else if (op === "/") {
     return divide(number1, number2);
   }
-  console.log("operate is running");
 }
