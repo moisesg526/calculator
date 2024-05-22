@@ -85,9 +85,9 @@ function operate(number1, op, number2) {
     return add(number1, number2);
   } else if (op === "-") {
     return subtract(number1, number2);
-  } else if (op === "*") {
+  } else if (op === "X") {
     return multiply(number1, number2);
-  } else if (op === "/") {
+  } else if (op === "÷") {
     return divide(number1, number2);
   }
 }
