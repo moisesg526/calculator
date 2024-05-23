@@ -47,12 +47,11 @@ function operation(e) {
   console.log(operationValue);
 }
 
-// Number are being added but no math just concatonation FIX PRBLEM.
-
 function add(num1, num2) {
   let sum = num1 + num2;
   console.log(sum);
   display.textContent = sum;
+  operationClicked = false;
   return sum;
 }
 
@@ -60,6 +59,7 @@ function subtract(num1, num2) {
   let difference = num1 - num2;
   console.log(difference);
   display.textContent = difference;
+  operationClicked = false;
   return difference;
 }
 
@@ -67,6 +67,7 @@ function multiply(num1, num2) {
   let product = num1 * num2;
   console.log(product);
   display.textContent = product;
+  operationClicked = false;
   return product;
 }
 
@@ -74,6 +75,7 @@ function divide(num1, num2) {
   let quotient = num1 / num2;
   console.log(quotient);
   display.textContent = quotient;
+  operationClicked = false;
   return quotient;
 }
 
