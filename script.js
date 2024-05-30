@@ -8,6 +8,7 @@ let displayValue1 = [];
 let displayValue2 = [];
 let operationValue;
 let operationClicked = false;
+let clickCount = 0;
 
 Array.from(btn).forEach((button) => {
   button.addEventListener("click", displayNumber);
@@ -33,18 +34,23 @@ function displayNumber(e) {
   if (operationClicked === false) {
     displayValue1.push(value);
     display.textContent = displayValue1.join("");
-    console.log(displayValue1);
+    console.log(`Value 1: ${displayValue1}`);
   } else if (operationClicked === true) {
     displayValue2.push(value);
     display.textContent = displayValue2.join("");
-    console.log(displayValue2);
+    console.log(`Value 2: ${displayValue2}`);
   }
 }
 
 function operation(e) {
   operationClicked = true;
+  clickCount++;
   operationValue = e.target.value;
-  console.log(operationValue);
+  if (clickCount >= 2) {
+    displayValue1 = operate();
+    displayValue2 = [];
+  }
+  console.log(`Operation: ${operationValue}, Click count: ${clickCount}`);
 }
 
 function add(num1, num2) {
@@ -84,12 +90,16 @@ function operate(number1, op, number2) {
   number2 = Number(displayValue2.join(""));
   op = operationValue;
   if (op === "+") {
+    clickCount = 0;
     return add(number1, number2);
   } else if (op === "-") {
+    clickCount = 0;
     return subtract(number1, number2);
   } else if (op === "X") {
+    clickCount = 0;
     return multiply(number1, number2);
   } else if (op === "÷") {
+    clickCount = 0;
     return divide(number1, number2);
   }
 }
