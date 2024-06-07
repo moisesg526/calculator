@@ -9,6 +9,7 @@ let displayValue2 = [];
 let operationValue;
 let operationClicked = false;
 let clickCount = 0;
+let result;
 
 Array.from(btn).forEach((button) => {
   button.addEventListener("click", displayNumber);
@@ -43,10 +44,21 @@ function displayNumber(e) {
 }
 
 function operation(e) {
+  if (clickCount === 1) {
+    mulpitpleOperations();
+  }
   operationClicked = true;
   clickCount++;
   operationValue = e.target.value;
   console.log(`Operation: ${operationValue}, Click count: ${clickCount}`);
+}
+
+/// create multiple operations function to run when the operation buttons are clicked multiple tinmes
+function mulpitpleOperations() {
+  result = operate();
+  console.log(result);
+  displayValue1 = result;
+  displayValue2 = [];
 }
 
 function add(num1, num2) {
@@ -54,12 +66,6 @@ function add(num1, num2) {
   console.log(sum);
   display.textContent = sum;
   operationClicked = false;
-  if (clickCount === 1) {
-    displayValue1 = [];
-    displayValue1.push(sum);
-    displayValue2 = [];
-    display.textContent = displayValue1;
-  }
   return sum;
 }
 
@@ -83,10 +89,14 @@ function multiply(num1, num2) {
 
 function divide(num1, num2) {
   let quotient = num1 / num2;
+  if (num2 === 0) {
+    display.textContent = "Hell No!";
+  } else {
+    display.textContent = quotient;
+    operationClicked = false;
+    displayValue1 = quotient;
+  }
   console.log(quotient);
-  display.textContent = quotient;
-  operationClicked = false;
-  displayValue1 = quotient;
   return quotient;
 }
 
